@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LeetCode Complexity Analyzer</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="console">
+    <header class="console-header">
+      <div class="console-title">
+        <span class="console-glyph">⌁</span>
+        <span>LC ANALYZER</span>
+      </div>
+      <div class="console-sub">// settings</div>
+    </header>
+
+    <section class="console-section">
+      <div class="console-label">API KEY</div>
+      <input id="apiKey" type="password" placeholder="gsk_..." autocomplete="off" />
+      <div class="console-hint">
+        Stored locally in your browser only. Get a free key at
+        <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com</a>.
+      </div>
+    </section>
+
+    <section class="console-section">
+      <div class="console-label">MODEL</div>
+      <select id="model">
+        <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile</option>
+        <option value="llama-3.1-8b-instant">llama-3.1-8b-instant (faster)</option>
+      </select>
+    </section>
+
+    <section class="console-section">
+      <div class="console-label">FOCUS TIMER</div>
+      <div class="row">
+        <input id="timerMinutes" type="number" min="0" max="120" step="1" />
+        <span class="unit">min before hints unlock</span>
+      </div>
+    </section>
+
+    <section class="console-section toggles">
+      <label class="toggle-row">
+        <span>Analyze button</span>
+        <input type="checkbox" id="analyzeEnabled" />
+      </label>
+      <label class="toggle-row">
+        <span>Hide difficulty</span>
+        <input type="checkbox" id="hideDifficultyEnabled" />
+      </label>
+      <label class="toggle-row">
+        <span>Lock hints with timer</span>
+        <input type="checkbox" id="hintLockEnabled" />
+      </label>
+    </section>
+
+    <button id="saveBtn" class="save-btn">Save settings</button>
+    <div id="savedMsg" class="saved-msg">Saved ✓</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

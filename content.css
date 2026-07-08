@@ -1,0 +1,279 @@
+/* content.css — injected UI on LeetCode problem pages
+   Palette: bg #12141a, panel #1b1e27, border #262b36,
+   cyan #3fd6c4 (analysis), amber #f2a94e (timer/lock),
+   text #e7e9ee, muted #7d8496 */
+
+#lca-analyze-btn {
+  all: unset;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999998;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: #12141a;
+  border: 1px solid #3fd6c4;
+  color: #3fd6c4;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+#lca-analyze-btn:hover {
+  background: #171a21;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(63, 214, 196, 0.25);
+}
+.lca-btn-icon {
+  font-size: 15px;
+}
+
+/* ---- Analysis panel ---- */
+.lca-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: #12141a;
+  border-left: 1px solid #262b36;
+  z-index: 999999;
+  transition: right 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #e7e9ee;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.5);
+}
+.lca-panel.lca-open {
+  right: 0;
+}
+.lca-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid #262b36;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #7d8496;
+}
+.lca-panel-close {
+  all: unset;
+  cursor: pointer;
+  color: #7d8496;
+  padding: 4px 8px;
+}
+.lca-panel-close:hover {
+  color: #e7e9ee;
+}
+.lca-panel-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.lca-scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #171a21;
+  border: 1px solid #262b36;
+  border-radius: 10px;
+  padding: 18px 12px;
+  margin-bottom: 20px;
+}
+.lca-score-col {
+  flex: 1;
+  text-align: center;
+}
+.lca-score-label {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #7d8496;
+  margin-bottom: 6px;
+}
+.lca-score-tc {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: #e7e9ee;
+}
+.lca-score-optimal .lca-score-tc {
+  color: #3fd6c4;
+}
+.lca-score-sc {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 11px;
+  color: #7d8496;
+  margin-top: 4px;
+}
+.lca-score-divider {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 11px;
+  color: #414759;
+  padding: 0 10px;
+}
+
+.lca-section {
+  margin-bottom: 16px;
+}
+.lca-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #f2a94e;
+  margin-bottom: 4px;
+}
+.lca-section-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #c7cad3;
+}
+
+.lca-verdict {
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 12px;
+  background: rgba(63, 214, 196, 0.08);
+  border-left: 3px solid #3fd6c4;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.lca-tip {
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 12px;
+  background: rgba(242, 169, 78, 0.08);
+  border-left: 3px solid #f2a94e;
+  border-radius: 4px;
+}
+
+.lca-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 0;
+  color: #7d8496;
+  font-size: 13px;
+}
+.lca-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #262b36;
+  border-top-color: #3fd6c4;
+  border-radius: 50%;
+  animation: lca-spin 0.8s linear infinite;
+}
+@keyframes lca-spin {
+  to { transform: rotate(360deg); }
+}
+.lca-error {
+  color: #ff6b6b;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 16px;
+  background: rgba(255, 107, 107, 0.08);
+  border-radius: 6px;
+}
+
+/* ---- Difficulty hiding ---- */
+.lca-difficulty-badge {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #262b36;
+  color: #7d8496;
+  border: 1px solid #414759;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.lca-difficulty-badge:hover {
+  background: #2f3542;
+  color: #e7e9ee;
+}
+
+/* ---- Hint lock widget ---- */
+.lca-hint-widget {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #12141a;
+  border: 1px solid #262b36;
+  border-radius: 10px;
+  padding: 8px 14px 8px 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+}
+.lca-hint-ring {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.lca-ring-svg {
+  width: 40px;
+  height: 40px;
+  transform: rotate(-90deg);
+}
+.lca-ring-bg {
+  fill: none;
+  stroke: #262b36;
+  stroke-width: 3;
+}
+.lca-ring-fg {
+  fill: none;
+  stroke: #f2a94e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+.lca-lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+}
+.lca-hint-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #7d8496;
+}
+.lca-hint-time {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f2a94e;
+}
+.lca-hint-widget.lca-unlocked .lca-hint-time {
+  color: #3ecf8e;
+}
+.lca-hint-widget.lca-unlocked .lca-ring-fg {
+  stroke: #3ecf8e;
+}
+.lca-hint-widget.lca-shake {
+  animation: lca-shake 0.4s ease;
+}
+@keyframes lca-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
