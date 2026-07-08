@@ -29,9 +29,3 @@ Your API key is stored via `chrome.storage.sync` (local to your Chrome profile/a
 - **Reading code from the editor** works by reading the visible rendered lines in Monaco's `.view-lines` (LeetCode's code editor component), so it needs the code to actually be visible/rendered on screen — this is normal and not affected by scrolling within reason.
 - **Hint locking** blocks clicks on elements whose visible text matches "hint" — this is a heuristic (LeetCode doesn't expose a stable, dedicated hint-button attribute), so on some problem layouts it may need a selector tweak.
 - The timer persists per-problem in local extension storage, so reloading the page won't reset your countdown.
-
-## Next steps you might want
-
-- Publish to the Chrome Web Store (needs a developer account, $5 one-time fee, and a store listing/screenshots).
-- Add a "reset timer" button per problem.
-- Cache analysis results per problem so re-opening a solved problem doesn't re-call the API.
