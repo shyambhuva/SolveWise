@@ -1,4 +1,4 @@
-# LeetCode Complexity Analyzer
+# SolveWise-LeetCode Complexity Analyzer
 
 A Chrome extension for LeetCode with three features:
 
@@ -10,7 +10,7 @@ A Chrome extension for LeetCode with three features:
 
 1. Open Chrome and go to `chrome://extensions`.
 2. Turn on **Developer mode** (top right).
-3. Click **Load unpacked** and select this folder (`leetcode-analyzer`).
+3. Click **Load unpacked** and select this folder (`SolveWise`).
 4. Click the extension's icon in your toolbar → paste a free Groq API key from [console.groq.com/keys](https://console.groq.com/keys) → **Save settings**.
 5. Go to any `leetcode.com/problems/...` page. You'll see the Analyze button (bottom-right) and the hint timer (bottom-left).
 
